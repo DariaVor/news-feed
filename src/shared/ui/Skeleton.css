@@ -1,0 +1,30 @@
+.news-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-card.big {
+  grid-column: span 3;
+}
+
+.skeleton-card.small {
+  grid-column: span 2;
+}
+
+@media (max-width: 1024px) {
+  .news-skeleton-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skeleton-card.big,
+  .skeleton-card.small {
+    grid-column: span 1;
+  }
+}

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Post } from '../../entities/post/model/types';
 import { useGetPostsQuery } from '../../entities/post/api/postsApi';
 import NewsCard from '../../entities/post/ui/NewsCard';
+import NewsSkeleton from '../../shared/ui/Skeleton';
 
 import './NewsFeed.css';
 
@@ -12,7 +13,7 @@ const NewsFeed: React.FC = () => {
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  const { data, isFetching } = useGetPostsQuery({ limit: LIMIT, skip });
+  const { data, isLoading, isFetching } = useGetPostsQuery({ limit: LIMIT, skip });
 
   useEffect(() => {
     if (data?.posts) {
@@ -51,6 +52,8 @@ const NewsFeed: React.FC = () => {
     <div className="news-container">
       <h1>Новостная лента</h1>
       <div className="news-grid">{renderCards()}</div>
+
+      {(isLoading || isFetching) && <NewsSkeleton />}
 
       <div ref={observerRef}></div>
     </div>
