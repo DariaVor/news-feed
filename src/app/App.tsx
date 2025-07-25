@@ -1,4 +1,6 @@
+import NewsFeed from '../pages/NewsFeed/NewsFeed';
+
 const App = () => {
-  return <div>Новостная лента</div>;
+  return <NewsFeed />;
 };
 export default App;

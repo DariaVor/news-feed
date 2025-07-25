@@ -1,0 +1,34 @@
+.news-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  overflow-x: hidden;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.card-wrapper {
+  display: flex;
+}
+
+.card-wrapper.big {
+  grid-column: span 3;
+}
+
+.card-wrapper.small {
+  grid-column: span 2;
+}
+
+@media (max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-wrapper.big {
+    grid-column: span 2;
+  }
+}
