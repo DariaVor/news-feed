@@ -19,7 +19,7 @@ const NewsCard: React.FC<Props> = ({ post, variant = 'small' }) => {
       <p className="news-body">{post.body}</p>
       <Space wrap>
         {post.tags.map((tag) => (
-          <Tag color="blue" key={tag}>
+          <Tag color="blue" key={tag} style={{ fontFamily: 'Montserrat' }}>
             {tag}
           </Tag>
         ))}
