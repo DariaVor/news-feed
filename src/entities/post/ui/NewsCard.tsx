@@ -2,6 +2,7 @@ import { Card, Tag, Space } from 'antd';
 import type { Post } from '../model/types';
 
 import './NewsCard.css';
+import { DislikeOutlined, LikeOutlined } from '@ant-design/icons';
 
 interface Props {
   post: Post;
@@ -13,7 +14,7 @@ const NewsCard: React.FC<Props> = ({ post, variant = 'small' }) => {
     <Card
       className={`news-card ${variant}`}
       title={post.title}
-      bordered={false}
+      variant="borderless"
       style={{ width: '100%', height: '100%' }}
     >
       <p className="news-body">{post.body}</p>
@@ -24,8 +25,15 @@ const NewsCard: React.FC<Props> = ({ post, variant = 'small' }) => {
           </Tag>
         ))}
       </Space>
-      <div style={{ marginTop: 12 }}>
-        {post.reactions.likes} | {post.reactions.dislikes}
+      <div className="reactions">
+        <Space size="middle">
+          <span>
+            <LikeOutlined style={{ fontSize: 14 }} /> {post.reactions.likes}
+          </span>
+          <span>
+            <DislikeOutlined style={{ fontSize: 14 }} /> {post.reactions.dislikes}
+          </span>
+        </Space>
       </div>
     </Card>
   );
